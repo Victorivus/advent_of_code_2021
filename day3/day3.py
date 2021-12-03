@@ -5,7 +5,7 @@ pb_input = open("input.txt").read().splitlines()
 
 def computeEpsilonGamma(pb_input):
     gamma = []
-    delta = 0.0000000000001  # it will keep 1 when 0 and 1 are equally common
+    delta = 0.0000000000001  # it will keep 1 when 0 and 1 are equally common for gamma and 0 for epsilon
 
     for i in range(len(pb_input[0])):
         gamma.append(round(sum(int(j[i]) for j in pb_input) / len(pb_input) + delta) % 2)
