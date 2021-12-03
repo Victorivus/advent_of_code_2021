@@ -10,13 +10,13 @@ input = real_input
 
 x = y = 0
 
-x = sum([n if d=='forward' else 0 for d,n in input])
+x = sum(n if d=='forward' else 0 for d,n in input)
 print(f'We have a have a horizontal position of {x}')
 
 
 
-y = sum([n if d=='down' else 0 for d,n in input])
-y += sum([-n if d=='up' else 0 for d,n in input])
+y = sum(n if d=='down' else 0 for d,n in input)
+y += sum(-n if d=='up' else 0 for d,n in input)
 print(f'We have a have a horizontal position of {y}')
 
 
@@ -31,14 +31,14 @@ movement_idx = [i for i, m in enumerate(movement) if m]
 
 mvs = [input[i+1:j] for i,j in zip(movement_idx,movement_idx[1:])]
 
-x = sum([n if d=='forward' else 0 for d,n in input])
+x = sum(n if d=='forward' else 0 for d,n in input)
 
 
-a = [sum([n if d=='down' else 0 for d,n in mv]) + sum([-n if d=='up' else 0 for d,n in mv]) for mv in mvs]
+a = [sum(n if d=='down' else 0 for d,n in mv) + sum(-n if d=='up' else 0 for d,n in mv) for mv in mvs]
 a.insert(0,0)
 a = list(accumulate(a))
 
-y = sum([mv*aim for mv,aim in zip([n for d,n in input if d=='forward'],a)])
+y = sum(mv*aim for mv,aim in zip([n for d,n in input if d=='forward'],a))
 
 print(f'We have a have a horizontal position of {x}')
 
